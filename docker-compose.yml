@@ -8,7 +8,6 @@ services:
     hostname: 5eTools
     container_name: 5eTools
     restart: unless-stopped
-    init: true
     command: sh -c "/usr/bin/run.sh"
     ports:
       - "${PORT}:${PORT}"
@@ -22,9 +21,9 @@ services:
       - REPO=${REPO}
     healthcheck:
       test: sh -c '/usr/bin/healthcheck.sh'
-      interval: 5m
+      interval: 15m
       retries: 0
-      start_period: 30m
+      start_period: 5m
       timeout: 120s
 volumes:
   5eTools-data:

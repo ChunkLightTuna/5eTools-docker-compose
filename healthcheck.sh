@@ -9,7 +9,7 @@ git pull
 commit_after=$(git log -n 1)
 
 if [[ "$commit_before" != "$commit_after" ]]; then
-  kill -s SIGKILL 1
+  pkill -f "python3 -m http.server $PORT"
 fi
 
 
