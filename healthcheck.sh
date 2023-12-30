@@ -2,7 +2,7 @@ if ! command -v git; then
   exit 0
 fi
 
-cd $DIR
+cd "$REPO"
 
 commit_before=$(git log -n 1)
 git pull

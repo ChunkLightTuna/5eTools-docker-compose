@@ -1,11 +1,11 @@
 apk add --no-cache git
 
 
-if [ -z "$(ls -A "$DIR")" ]; then
-  git clone https://github.com/"$REPO"/"$DIR".git 
+if [ -z "$(ls -A "$REPO")" ]; then
+  git clone https://github.com/"$ORG"/"$REPO".git 
 fi
 
-cd "$DIR"
+cd "$REPO"
 
-python3 -m http.server $PORT
+python3 -m http.server "$PORT"
 

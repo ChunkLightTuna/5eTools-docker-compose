@@ -15,11 +15,11 @@ services:
     volumes:
       - ./run.sh:/usr/bin/run.sh
       - ./healthcheck.sh:/usr/bin/healthcheck.sh
-      - 5eTools-data:/${REPO}.github.io
+      - 5eTools-data:/${REPO}
     environment:
       - PORT=${PORT}
+      - ORG=${ORG}
       - REPO=${REPO}
-      - DIR=${REPO}.github.io
     healthcheck:
       test: sh -c '/usr/bin/healthcheck.sh'
       interval: 5m
