@@ -1,0 +1,30 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  5eTools:
+    image: python:3.12-alpine
+    hostname: 5eTools
+    container_name: 5eTools
+    restart: unless-stopped
+    init: true
+    command: sh -c "/usr/bin/run.sh"
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./run.sh:/usr/bin/run.sh
+      - ./healthcheck.sh:/usr/bin/healthcheck.sh
+      - 5eTools-data:/${REPO}.github.io
+    environment:
+      - PORT=${PORT}
+      - REPO=${REPO}
+      - DIR=${REPO}.github.io
+    healthcheck:
+      test: sh -c '/usr/bin/healthcheck.sh'
+      interval: 5m
+      retries: 0
+      start_period: 30m
+      timeout: 120s
+volumes:
+  5eTools-data:
