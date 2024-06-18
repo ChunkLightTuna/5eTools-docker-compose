@@ -1,7 +1,3 @@
-# docker-compose.yml
-
-version: '3.8'
-
 services:
   5eTools:
     image: python:3.12-alpine
